@@ -14,14 +14,14 @@
     <tr>
       <th>Name</th>
       <th>Status</th>
+      <th>Uptime</th>
+      <th>Date</th>
       <th>Status hint</th>
       <th>Monitor</th>
       <th>Monitor mode</th>
       <th>Pending action</th>
-      <th>Date</th>
       <th>Pid</th>
       <th>Ppid</th>
-      <th>Uptime</th>
       <th>Children</th>
       <th>Cpu percent</th>
       <th>Memory percent</th>
@@ -35,14 +35,14 @@
       <tr id="process-<%= process.id %>">
         <td><%= process.name %></td>
         <td><%= process.status %></td>
+        <td><%= duration(process.uptime) %></td>
+        <td><%= relative(process.date) %></td>
         <td><%= process.status_hint %></td>
         <td><%= process.monitor %></td>
         <td><%= process.monitor_mode %></td>
         <td><%= process.pending_action %></td>
-        <td><%= process.date %></td>
         <td><%= process.pid %></td>
         <td><%= process.ppid %></td>
-        <td><%= process.uptime %></td>
         <td><%= process.children %></td>
         <td><%= process.cpu_percent %></td>
         <td><%= process.memory_percent %></td>

@@ -25,7 +25,7 @@
       <tr id="server-<%= server.id %>">
         <td><%= server.monit_version %></td>
         <td><%= server.hostname %></td>
-        <td><%= server.uptime %></td>
+        <td><%= duration(server.uptime) %></td>
         <td><%= server.address %></td>
 
         <td>

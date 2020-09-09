@@ -14,11 +14,11 @@
     <tr>
       <th>Name</th>
       <th>Status</th>
+      <th>Date</th>
       <th>Status hint</th>
       <th>Monitor</th>
       <th>Monitor mode</th>
       <th>Pending action</th>
-      <th>Date</th>
       <th>Load avg01</th>
       <th>Load avg05</th>
       <th>Load avg15</th>
@@ -31,11 +31,11 @@
       <tr id="system-<%= system.id %>">
         <td><%= system.name %></td>
         <td><%= system.status %></td>
+        <td><%= relative(system.date) %></td>
         <td><%= system.status_hint %></td>
         <td><%= system.monitor %></td>
         <td><%= system.monitor_mode %></td>
         <td><%= system.pending_action %></td>
-        <td><%= system.date %></td>
         <td><%= system.load_avg01 %></td>
         <td><%= system.load_avg05 %></td>
         <td><%= system.load_avg15 %></td>

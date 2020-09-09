@@ -14,6 +14,14 @@
   <%= text_input f, :status %>
   <%= error_tag f, :status %>
 
+  <%= label f, :uptime %>
+  <%= number_input f, :uptime %>
+  <%= error_tag f, :uptime %>
+
+  <%= label f, :date %>
+  <%= number_input f, :date %>
+  <%= error_tag f, :date %>
+
   <%= label f, :status_hint %>
   <%= number_input f, :status_hint %>
   <%= error_tag f, :status_hint %>
@@ -30,10 +38,6 @@
   <%= number_input f, :pending_action %>
   <%= error_tag f, :pending_action %>
 
-  <%= label f, :date %>
-  <%= number_input f, :date %>
-  <%= error_tag f, :date %>
-
   <%= label f, :pid %>
   <%= number_input f, :pid %>
   <%= error_tag f, :pid %>
@@ -41,10 +45,6 @@
   <%= label f, :ppid %>
   <%= number_input f, :ppid %>
   <%= error_tag f, :ppid %>
-
-  <%= label f, :uptime %>
-  <%= number_input f, :uptime %>
-  <%= error_tag f, :uptime %>
 
   <%= label f, :children %>
   <%= number_input f, :children %>

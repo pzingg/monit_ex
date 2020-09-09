@@ -22,6 +22,16 @@
   </li>
 
   <li>
+    <strong>Uptime:</strong>
+    <%= duration(@process.uptime) %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @process.date %>
+  </li>
+
+  <li>
     <strong>Status hint:</strong>
     <%= @process.status_hint %>
   </li>
@@ -42,11 +52,6 @@
   </li>
 
   <li>
-    <strong>Date:</strong>
-    <%= @process.date %>
-  </li>
-
-  <li>
     <strong>Pid:</strong>
     <%= @process.pid %>
   </li>
@@ -54,11 +59,6 @@
   <li>
     <strong>Ppid:</strong>
     <%= @process.ppid %>
-  </li>
-
-  <li>
-    <strong>Uptime:</strong>
-    <%= @process.uptime %>
   </li>
 
   <li>

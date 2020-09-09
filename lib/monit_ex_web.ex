@@ -89,6 +89,7 @@ defmodule MonitExWeb do
 
       import MonitExWeb.ErrorHelpers
       import MonitExWeb.LiveHelpers
+      import MonitExWeb.TimeHelpers
       import MonitExWeb.Gettext
       alias MonitExWeb.Router.Helpers, as: Routes
     end

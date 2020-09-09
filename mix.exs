@@ -20,7 +20,7 @@ defmodule MonitEx.MixProject do
   def application do
     [
       mod: {MonitEx.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :timex, :runtime_tools]
     ]
   end
 
@@ -47,7 +47,8 @@ defmodule MonitEx.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:quinn, "~> 1.1"},
-      {:bitmap, "~> 1.0"}
+      {:bitmap, "~> 1.0"},
+      {:timex, "~> 3.6"}
     ]
   end
 
