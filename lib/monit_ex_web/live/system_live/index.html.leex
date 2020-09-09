@@ -1,0 +1,53 @@
+<h1>Listing Systems</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, MonitExWeb.SystemLive.FormComponent,
+    id: @system.id || :new,
+    title: @page_title,
+    action: @live_action,
+    system: @system,
+    return_to: Routes.system_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Status hint</th>
+      <th>Monitor</th>
+      <th>Monitor mode</th>
+      <th>Pending action</th>
+      <th>Date</th>
+      <th>Load avg01</th>
+      <th>Load avg05</th>
+      <th>Load avg15</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="systems">
+    <%= for system <- @systems do %>
+      <tr id="system-<%= system.id %>">
+        <td><%= system.name %></td>
+        <td><%= system.status %></td>
+        <td><%= system.status_hint %></td>
+        <td><%= system.monitor %></td>
+        <td><%= system.monitor_mode %></td>
+        <td><%= system.pending_action %></td>
+        <td><%= system.date %></td>
+        <td><%= system.load_avg01 %></td>
+        <td><%= system.load_avg05 %></td>
+        <td><%= system.load_avg15 %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.system_show_path(@socket, :show, system) %></span>
+          <span><%= live_patch "Edit", to: Routes.system_index_path(@socket, :edit, system) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: system.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New System", to: Routes.system_index_path(@socket, :new) %></span>

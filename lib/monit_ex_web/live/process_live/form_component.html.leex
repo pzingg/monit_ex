@@ -1,0 +1,66 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "process-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :status %>
+  <%= text_input f, :status %>
+  <%= error_tag f, :status %>
+
+  <%= label f, :status_hint %>
+  <%= number_input f, :status_hint %>
+  <%= error_tag f, :status_hint %>
+
+  <%= label f, :monitor %>
+  <%= number_input f, :monitor %>
+  <%= error_tag f, :monitor %>
+
+  <%= label f, :monitor_mode %>
+  <%= number_input f, :monitor_mode %>
+  <%= error_tag f, :monitor_mode %>
+
+  <%= label f, :pending_action %>
+  <%= number_input f, :pending_action %>
+  <%= error_tag f, :pending_action %>
+
+  <%= label f, :date %>
+  <%= number_input f, :date %>
+  <%= error_tag f, :date %>
+
+  <%= label f, :pid %>
+  <%= number_input f, :pid %>
+  <%= error_tag f, :pid %>
+
+  <%= label f, :ppid %>
+  <%= number_input f, :ppid %>
+  <%= error_tag f, :ppid %>
+
+  <%= label f, :uptime %>
+  <%= number_input f, :uptime %>
+  <%= error_tag f, :uptime %>
+
+  <%= label f, :children %>
+  <%= number_input f, :children %>
+  <%= error_tag f, :children %>
+
+  <%= label f, :cpu_percent %>
+  <%= number_input f, :cpu_percent, step: "any" %>
+  <%= error_tag f, :cpu_percent %>
+
+  <%= label f, :memory_percent %>
+  <%= number_input f, :memory_percent, step: "any" %>
+  <%= error_tag f, :memory_percent %>
+
+  <%= label f, :memory_kilobyte %>
+  <%= number_input f, :memory_kilobyte %>
+  <%= error_tag f, :memory_kilobyte %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

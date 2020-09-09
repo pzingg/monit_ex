@@ -1,0 +1,61 @@
+<h1>Listing Processes</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, MonitExWeb.ProcessLive.FormComponent,
+    id: @process.id || :new,
+    title: @page_title,
+    action: @live_action,
+    process: @process,
+    return_to: Routes.process_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Status hint</th>
+      <th>Monitor</th>
+      <th>Monitor mode</th>
+      <th>Pending action</th>
+      <th>Date</th>
+      <th>Pid</th>
+      <th>Ppid</th>
+      <th>Uptime</th>
+      <th>Children</th>
+      <th>Cpu percent</th>
+      <th>Memory percent</th>
+      <th>Memory kilobyte</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="processes">
+    <%= for process <- @processes do %>
+      <tr id="process-<%= process.id %>">
+        <td><%= process.name %></td>
+        <td><%= process.status %></td>
+        <td><%= process.status_hint %></td>
+        <td><%= process.monitor %></td>
+        <td><%= process.monitor_mode %></td>
+        <td><%= process.pending_action %></td>
+        <td><%= process.date %></td>
+        <td><%= process.pid %></td>
+        <td><%= process.ppid %></td>
+        <td><%= process.uptime %></td>
+        <td><%= process.children %></td>
+        <td><%= process.cpu_percent %></td>
+        <td><%= process.memory_percent %></td>
+        <td><%= process.memory_kilobyte %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.process_show_path(@socket, :show, process) %></span>
+          <span><%= live_patch "Edit", to: Routes.process_index_path(@socket, :edit, process) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: process.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Process", to: Routes.process_index_path(@socket, :new) %></span>

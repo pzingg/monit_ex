@@ -1,0 +1,41 @@
+<h1>Show Server</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, MonitExWeb.ServerLive.FormComponent,
+    id: @server.id,
+    title: @page_title,
+    action: @live_action,
+    server: @server,
+    return_to: Routes.server_show_path(@socket, :show, @server) %>
+<% end %>
+
+<ul>
+  <li>
+    <strong>Monit ID:</strong>
+    <%= @server.id %>
+  </li>
+
+  <li>
+    <strong>Monit version:</strong>
+    <%= @server.monit_version %>
+  </li>
+
+  <li>
+    <strong>Hostname:</strong>
+    <%= @server.hostname %>
+  </li>
+
+  <li>
+    <strong>Uptime:</strong>
+    <%= @server.uptime %>
+  </li>
+
+  <li>
+    <strong>Address:</strong>
+    <%= @server.address %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.server_show_path(@socket, :edit, @server), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.server_index_path(@socket, :index) %></span>

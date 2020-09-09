@@ -1,0 +1,41 @@
+<h1>Listing Servers</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, MonitExWeb.ServerLive.FormComponent,
+    id: @server.id || :new,
+    title: @page_title,
+    action: @live_action,
+    server: @server,
+    return_to: Routes.server_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Monit version</th>
+      <th>Hostname</th>
+      <th>Uptime</th>
+      <th>Address</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="servers">
+    <%= for server <- @servers do %>
+      <tr id="server-<%= server.id %>">
+        <td><%= server.monit_version %></td>
+        <td><%= server.hostname %></td>
+        <td><%= server.uptime %></td>
+        <td><%= server.address %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.server_show_path(@socket, :show, server) %></span>
+          <span><%= live_patch "Edit", to: Routes.server_index_path(@socket, :edit, server) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: server.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Server", to: Routes.server_index_path(@socket, :new) %></span>

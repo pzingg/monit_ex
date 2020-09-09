@@ -1,0 +1,67 @@
+<h1>Show System</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, MonitExWeb.SystemLive.FormComponent,
+    id: @system.id,
+    title: @page_title,
+    action: @live_action,
+    system: @system,
+    return_to: Routes.system_show_path(@socket, :show, @system) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @system.name %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @system.status %>
+  </li>
+
+  <li>
+    <strong>Status hint:</strong>
+    <%= @system.status_hint %>
+  </li>
+
+  <li>
+    <strong>Monitor:</strong>
+    <%= @system.monitor %>
+  </li>
+
+  <li>
+    <strong>Monitor mode:</strong>
+    <%= @system.monitor_mode %>
+  </li>
+
+  <li>
+    <strong>Pending action:</strong>
+    <%= @system.pending_action %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @system.date %>
+  </li>
+
+  <li>
+    <strong>Load avg01:</strong>
+    <%= @system.load_avg01 %>
+  </li>
+
+  <li>
+    <strong>Load avg05:</strong>
+    <%= @system.load_avg05 %>
+  </li>
+
+  <li>
+    <strong>Load avg15:</strong>
+    <%= @system.load_avg15 %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.system_show_path(@socket, :edit, @system), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.system_index_path(@socket, :index) %></span>

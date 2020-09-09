@@ -1,0 +1,87 @@
+<h1>Show Process</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, MonitExWeb.ProcessLive.FormComponent,
+    id: @process.id,
+    title: @page_title,
+    action: @live_action,
+    process: @process,
+    return_to: Routes.process_show_path(@socket, :show, @process) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @process.name %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @process.status %>
+  </li>
+
+  <li>
+    <strong>Status hint:</strong>
+    <%= @process.status_hint %>
+  </li>
+
+  <li>
+    <strong>Monitor:</strong>
+    <%= @process.monitor %>
+  </li>
+
+  <li>
+    <strong>Monitor mode:</strong>
+    <%= @process.monitor_mode %>
+  </li>
+
+  <li>
+    <strong>Pending action:</strong>
+    <%= @process.pending_action %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @process.date %>
+  </li>
+
+  <li>
+    <strong>Pid:</strong>
+    <%= @process.pid %>
+  </li>
+
+  <li>
+    <strong>Ppid:</strong>
+    <%= @process.ppid %>
+  </li>
+
+  <li>
+    <strong>Uptime:</strong>
+    <%= @process.uptime %>
+  </li>
+
+  <li>
+    <strong>Children:</strong>
+    <%= @process.children %>
+  </li>
+
+  <li>
+    <strong>Cpu percent:</strong>
+    <%= @process.cpu_percent %>
+  </li>
+
+  <li>
+    <strong>Memory percent:</strong>
+    <%= @process.memory_percent %>
+  </li>
+
+  <li>
+    <strong>Memory kilobyte:</strong>
+    <%= @process.memory_kilobyte %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.process_show_path(@socket, :edit, @process), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.process_index_path(@socket, :index) %></span>

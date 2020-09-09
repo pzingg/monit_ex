@@ -1,0 +1,52 @@
+<h1>Show Platform</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, MonitExWeb.PlatformLive.FormComponent,
+    id: @platform.id,
+    title: @page_title,
+    action: @live_action,
+    platform: @platform,
+    return_to: Routes.platform_show_path(@socket, :show, @platform) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @platform.name %>
+  </li>
+
+  <li>
+    <strong>Release:</strong>
+    <%= @platform.release %>
+  </li>
+
+  <li>
+    <strong>Version:</strong>
+    <%= @platform.version %>
+  </li>
+
+  <li>
+    <strong>Machine:</strong>
+    <%= @platform.machine %>
+  </li>
+
+  <li>
+    <strong>Cpu:</strong>
+    <%= @platform.cpu %>
+  </li>
+
+  <li>
+    <strong>Memory:</strong>
+    <%= @platform.memory %>
+  </li>
+
+  <li>
+    <strong>Swap:</strong>
+    <%= @platform.swap %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.platform_show_path(@socket, :edit, @platform), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.platform_index_path(@socket, :index) %></span>

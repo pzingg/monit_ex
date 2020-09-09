@@ -1,0 +1,47 @@
+<h1>Listing Platforms</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, MonitExWeb.PlatformLive.FormComponent,
+    id: @platform.id || :new,
+    title: @page_title,
+    action: @live_action,
+    platform: @platform,
+    return_to: Routes.platform_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Release</th>
+      <th>Version</th>
+      <th>Machine</th>
+      <th>Cpu</th>
+      <th>Memory</th>
+      <th>Swap</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="platforms">
+    <%= for platform <- @platforms do %>
+      <tr id="platform-<%= platform.id %>">
+        <td><%= platform.name %></td>
+        <td><%= platform.release %></td>
+        <td><%= platform.version %></td>
+        <td><%= platform.machine %></td>
+        <td><%= platform.cpu %></td>
+        <td><%= platform.memory %></td>
+        <td><%= platform.swap %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.platform_show_path(@socket, :show, platform) %></span>
+          <span><%= live_patch "Edit", to: Routes.platform_index_path(@socket, :edit, platform) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: platform.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Platform", to: Routes.platform_index_path(@socket, :new) %></span>

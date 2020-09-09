@@ -1,0 +1,30 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "server-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :id %>
+  <%= text_input f, :id %>
+  <%= error_tag f, :id %>
+
+  <%= label f, :monit_version %>
+  <%= text_input f, :monit_version %>
+  <%= error_tag f, :monit_version %>
+
+  <%= label f, :hostname %>
+  <%= text_input f, :hostname %>
+  <%= error_tag f, :hostname %>
+
+  <%= label f, :uptime %>
+  <%= number_input f, :uptime %>
+  <%= error_tag f, :uptime %>
+
+  <%= label f, :address %>
+  <%= text_input f, :address %>
+  <%= error_tag f, :address %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>
